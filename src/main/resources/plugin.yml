@@ -1,0 +1,5 @@
+main: tp.dxvampi.TestPlugin
+version: 1.0.0a
+name: TestPlugin
+author: dxvampi
+api-version: 1.13
