@@ -8,16 +8,18 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 public class HelpCommand extends SubCommand {
     public HelpCommand(DeEssentials plugin, CommandSender sender, Command command, String label, String[] args) {
         super(plugin, sender, command, label, args);
     }
 
-    public String permission = "deessentials.maincommand.help";
+    private static final String PERMISSION = "deessentials.maincommand.help";
 
     @Override
     public void execute() {
-        if (sender instanceof Player && !sender.hasPermission(permission)) {
+        if (sender instanceof Player && !sender.hasPermission(PERMISSION)) {
             CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
             return;
         }
@@ -28,5 +30,10 @@ public class HelpCommand extends SubCommand {
         sender.sendMessage(MessageUtils.getColoredMessage("&7- /deessentials welcome: &f" + "Welcomes the user"));
         sender.sendMessage(MessageUtils.getColoredMessage("&7- /uptime: &f" + "Shows the uptime of the server"));
         sender.sendMessage(MessageUtils.getColoredMessage("&f&l ---- &a&l" + plugin.getPluginName() + " &f&lCOMMANDS ----"));
+    }
+
+    @Override
+    public List<String> onTabComplete() {
+        return List.of();
     }
 }

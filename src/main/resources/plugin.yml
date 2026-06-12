@@ -4,6 +4,8 @@ name: DeEssentials
 author: dxvampi
 api-version: 1.13
 commands:
+  ping:
+    description: Pong!
   deessentials:
     description: Main command for De-Essentials
     aliases:

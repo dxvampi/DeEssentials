@@ -15,11 +15,11 @@ public class GetInfoCommand extends SubCommand {
         super(plugin, sender, command, label, args);
     }
 
-    public String permission = "deessentials.maincommand.get";
+    private static final String PERMISSION = "deessentials.maincommand.get";
 
     @Override
     public void execute() {
-        if (!sender.hasPermission(permission)) {
+        if (!sender.hasPermission(PERMISSION)) {
             CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
             return;
         }
@@ -49,7 +49,7 @@ public class GetInfoCommand extends SubCommand {
     public List<String> onTabComplete() {
         List<String> completions = new ArrayList<>();
 
-        if (!sender.hasPermission(permission)) return completions;
+        if (!sender.hasPermission(PERMISSION)) return completions;
 
         if (args.length == 2) {
             List<String> subcommands = List.of("author", "version", "name", "full");

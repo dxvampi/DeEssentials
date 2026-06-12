@@ -1,7 +1,9 @@
 package de.dxvampi;
 
+import de.dxvampi.commands.PingCommand;
 import de.dxvampi.commands.UptimeCommand;
 import de.dxvampi.commands.maincommand.MainCommand;
+import de.dxvampi.listeners.PlayerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.dxvampi.utils.MessageUtils;
@@ -21,6 +23,7 @@ public class DeEssentials extends JavaPlugin {
     public void onEnable() {
         try {
             registerCommands();
+            registerEvents();
         }
         catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage("Could not initialize " + name + "."));
@@ -38,11 +41,18 @@ public class DeEssentials extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage(prefix + "&c" + "has been disabled, ciao!"));
     }
 
-    public void registerCommands() {
-        Objects.requireNonNull(this.getCommand("deessentials")).setExecutor(new MainCommand(this));
-        Objects.requireNonNull(this.getCommand("deessentials")).setTabCompleter(new MainCommand(this));
+    private void registerCommands() {
+        MainCommand mainCommand = new MainCommand(this);
+        Objects.requireNonNull(this.getCommand("deessentials")).setExecutor(mainCommand);
+        Objects.requireNonNull(this.getCommand("deessentials")).setTabCompleter(mainCommand);
+
+        Objects.requireNonNull(this.getCommand("ping")).setExecutor(new PingCommand());
 
         Objects.requireNonNull(this.getCommand("uptime")).setExecutor(new UptimeCommand(this));
+    }
+
+    private void registerEvents() {
+        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
     }
 
     // GETTER METHODS
