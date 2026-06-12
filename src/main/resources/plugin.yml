@@ -1,5 +1,17 @@
-main: tp.dxvampi.TestPlugin
+main: de.dxvampi.DeEssentials
 version: 1.0.0a
-name: TestPlugin
+name: DeEssentials
 author: dxvampi
 api-version: 1.13
+commands:
+  deessentials:
+    description: Main command for De-Essentials
+    aliases:
+      - dessentials
+      - essentials
+  uptime:
+    description: Uptime of the server
+    aliases:
+      - upt
+      - serveruptime
+      - supt
