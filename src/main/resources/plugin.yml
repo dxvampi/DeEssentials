@@ -9,3 +9,9 @@ commands:
     aliases:
       - dessentials
       - essentials
+  uptime:
+    description: Uptime of the server
+    aliases:
+      - upt
+      - serveruptime
+      - supt
