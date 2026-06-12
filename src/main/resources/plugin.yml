@@ -15,3 +15,23 @@ commands:
       - upt
       - serveruptime
       - supt
+
+permissions:
+  deessentials.maincommand:
+    description: Allow players to use /deessentials or any of the alias
+    default: true
+  deessentials.maincommand.get:
+    description: Allow players to see info about the plugin
+    default: op
+  deessentials.maincommand.date:
+    description: Allow players to see the actual date
+    default: true
+  deessentials.maincommand.version:
+    description: Allow players to see the current plugin's version
+    default: op
+  deessentials.uptime:
+    description: Allow players to see the server uptime
+    default: op
+  deessentials.maincommand.help:
+    description: Allow players to see help about the plugin commands
+    default: true
