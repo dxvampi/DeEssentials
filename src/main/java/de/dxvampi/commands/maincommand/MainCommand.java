@@ -38,11 +38,11 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 case "greet":
                 case "welcome": welcomeCommand.execute(); break;
                 case "get": getInfoCommand.execute(); break;
-                default: sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cSub-command &f/" + label + " " +
+                default: sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cSub-command &7/" + label + " " +
                         args[0] + "&c does not exist"));
             }
         } else {
-            sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&a Running correctly! Version: &c"+plugin.getVersion()+"&a."));
+            sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&aRunning correctly! Version: &c"+plugin.getVersion()+"&a."));
             return true;
         }
 
@@ -65,8 +65,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length > 1) {
-            switch (args[0]) {
-                case "get": completions = new GetInfoCommand(plugin, sender, command, label, args).onTabComplete(); break;
+            if (args[0].equals("get")) {
+                completions = new GetInfoCommand(plugin, sender, command, label, args).onTabComplete();
             }
         }
 

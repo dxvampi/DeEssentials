@@ -16,6 +16,10 @@ public class GetInfoCommand extends SubCommand {
 
     @Override
     public void execute() {
+        if (args.length < 2) {
+            sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cCommand usage: &7/" + label + " get <author/name/version/full>"));
+            return;
+        }
         switch (args[1]) {
             case "author":
                 sender.sendMessage(MessageUtils.getColoredMessage("&fThe author of the plugin is &a" + plugin.getAuthor().toString()));
@@ -30,7 +34,8 @@ public class GetInfoCommand extends SubCommand {
                 sender.sendMessage(MessageUtils.getColoredMessage("&fRunning &a" + plugin.getPluginName() + " &fby &a" + plugin.getAuthor() + "&f (&av" + plugin.getVersion() + "&f)"));
                 break;
             default:
-                sender.sendMessage(MessageUtils.getColoredMessage("&cUnknown parameter: " + args[1]));
+                sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cCommand usage: &7/" + label + " get <author/name/version/full>"));
+                break;
         }
     }
 

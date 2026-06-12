@@ -17,7 +17,7 @@ public class HelpCommand extends SubCommand {
         sender.sendMessage(MessageUtils.getColoredMessage("&f&l ---- &a&l" + plugin.getPluginName() + " &f&lCOMMANDS ----"));
         sender.sendMessage(MessageUtils.getColoredMessage("&7- /deessentials help: &fShows a help menu"));
         sender.sendMessage(MessageUtils.getColoredMessage("&7- /deessentials date: &fShows current date and uptime"));
-        sender.sendMessage(MessageUtils.getColoredMessage("&7- /deessentials get: &f" + "idk this is for test"));
+        sender.sendMessage(MessageUtils.getColoredMessage("&7- /deessentials get <author/version/full/name>: &f" + "Shows information about the plugin"));
         sender.sendMessage(MessageUtils.getColoredMessage("&7- /deessentials welcome: &f" + "Welcomes the user"));
         sender.sendMessage(MessageUtils.getColoredMessage("&7- /uptime: &f" + "Shows the uptime of the server"));
         sender.sendMessage(MessageUtils.getColoredMessage("&f&l ---- &a&l" + plugin.getPluginName() + " &f&lCOMMANDS ----"));
