@@ -11,6 +11,7 @@ public abstract class SubCommand {
     protected final String label;
     protected final String[] args;
 
+
     public SubCommand(DeEssentials plugin, CommandSender sender, Command command, String label, String[] args) {
         this.plugin = plugin;
         this.sender = sender;

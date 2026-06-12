@@ -1,6 +1,7 @@
 package de.dxvampi.commands.maincommand;
 
 import de.dxvampi.DeEssentials;
+import de.dxvampi.commands.base.CommandErrors;
 import de.dxvampi.commands.maincommand.subcommands.DateCommand;
 import de.dxvampi.commands.maincommand.subcommands.GetInfoCommand;
 import de.dxvampi.commands.maincommand.subcommands.HelpCommand;
@@ -10,6 +11,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
@@ -25,6 +27,11 @@ public class MainCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
+
+        if (sender instanceof Player && !(sender.hasPermission("deessentials.maincommand"))) {
+            CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
+            return false;
+        }
 
         HelpCommand helpCommand = new HelpCommand(plugin, sender, command, label, args);
         DateCommand dateCommand = new DateCommand(plugin, sender, command, label, args);
@@ -50,8 +57,11 @@ public class MainCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String[] args) {
+    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
         List<String> completions = new ArrayList<>();
+        if (sender instanceof Player && (!sender.hasPermission("deessentials.maincommand"))) {
+            return completions;
+        }
         if (args.length == 1) {
             List<String> subcommands = List.of("date", "help", "get", "greet", "welcome");
 

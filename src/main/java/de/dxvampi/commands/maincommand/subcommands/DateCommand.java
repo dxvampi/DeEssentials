@@ -1,6 +1,7 @@
 package de.dxvampi.commands.maincommand.subcommands;
 
 import de.dxvampi.DeEssentials;
+import de.dxvampi.commands.base.CommandErrors;
 import de.dxvampi.commands.base.SubCommand;
 import de.dxvampi.utils.MessageUtils;
 import org.bukkit.command.Command;
@@ -18,6 +19,12 @@ public class DateCommand extends SubCommand {
 
     @Override
     public void execute() {
+
+        if (!sender.hasPermission("deessentials.maincommand.date")) {
+            CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
+            return;
+        }
+
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String actualDate = dateFormat.format(new Date());
         sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&aThe current server date is: &f" + actualDate + "&a."));

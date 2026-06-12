@@ -1,6 +1,7 @@
 package de.dxvampi.commands.maincommand.subcommands;
 
 import de.dxvampi.DeEssentials;
+import de.dxvampi.commands.base.CommandErrors;
 import de.dxvampi.commands.base.SubCommand;
 import de.dxvampi.utils.MessageUtils;
 import org.bukkit.command.Command;
@@ -14,8 +15,14 @@ public class GetInfoCommand extends SubCommand {
         super(plugin, sender, command, label, args);
     }
 
+    public String permission = "deessentials.maincommand.get";
+
     @Override
     public void execute() {
+        if (!sender.hasPermission(permission)) {
+            CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
+            return;
+        }
         if (args.length < 2) {
             sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cCommand usage: &7/" + label + " get <author/name/version/full>"));
             return;
@@ -41,6 +48,9 @@ public class GetInfoCommand extends SubCommand {
 
     public List<String> onTabComplete() {
         List<String> completions = new ArrayList<>();
+
+        if (!sender.hasPermission(permission)) return completions;
+
         if (args.length == 2) {
             List<String> subcommands = List.of("author", "version", "name", "full");
 

@@ -1,6 +1,7 @@
 package de.dxvampi.commands;
 
 import de.dxvampi.DeEssentials;
+import de.dxvampi.commands.base.CommandErrors;
 import de.dxvampi.utils.MessageUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,6 +21,10 @@ public class UptimeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
+        if (!sender.hasPermission("deessentials.uptime")) {
+            CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
+            return false;
+        }
         RuntimeMXBean rb = ManagementFactory.getRuntimeMXBean();
 
         long msUptime = rb.getUptime();
