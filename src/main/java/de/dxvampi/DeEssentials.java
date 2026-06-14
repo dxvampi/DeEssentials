@@ -18,7 +18,6 @@ import de.dxvampi.utils.MessageUtils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.ServiceConfigurationError;
 
 public class DeEssentials extends JavaPlugin {
 
