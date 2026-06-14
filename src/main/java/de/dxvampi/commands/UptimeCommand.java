@@ -6,12 +6,14 @@ import de.dxvampi.utils.MessageUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.jspecify.annotations.NonNull;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
+import java.util.List;
 
-public class UptimeCommand implements CommandExecutor {
+public class UptimeCommand implements CommandExecutor, TabCompleter {
 
     private final DeEssentials plugin;
 
@@ -38,5 +40,10 @@ public class UptimeCommand implements CommandExecutor {
                 " hours, " + minutes + " minutes and "+ seconds + " seconds&a."));
 
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
+        return List.of();
     }
 }

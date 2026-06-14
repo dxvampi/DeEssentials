@@ -33,18 +33,13 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        HelpCommand helpCommand = new HelpCommand(plugin, sender, command, label, args);
-        DateCommand dateCommand = new DateCommand(plugin, sender, command, label, args);
-        WelcomeCommand welcomeCommand = new WelcomeCommand(plugin, sender, command, label, args);
-        GetInfoCommand getInfoCommand = new GetInfoCommand(plugin, sender, command, label, args);
-
         if(args.length >= 1) {
             switch(args[0].toLowerCase()) {
-                case "date": dateCommand.execute(); break;
-                case "help": helpCommand.execute(); break;
+                case "date": new DateCommand(plugin, sender, command, label, args).execute(); break;
+                case "help": new HelpCommand(plugin, sender, command, label, args).execute(); break;
                 case "greet":
-                case "welcome": welcomeCommand.execute(); break;
-                case "get": getInfoCommand.execute(); break;
+                case "welcome": new WelcomeCommand(plugin, sender, command, label, args).execute(); break;
+                case "get": new GetInfoCommand(plugin, sender, command, label, args).execute(); break;
                 default: sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cSub-command &7/" + label + " " +
                         args[0] + "&c does not exist"));
             }

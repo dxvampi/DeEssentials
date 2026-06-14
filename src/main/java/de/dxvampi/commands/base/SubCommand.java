@@ -4,6 +4,8 @@ import de.dxvampi.DeEssentials;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import java.util.List;
+
 public abstract class SubCommand {
     protected final DeEssentials plugin;
     protected final CommandSender sender;
@@ -21,4 +23,5 @@ public abstract class SubCommand {
     }
 
     public abstract void execute();
+    public abstract List<String> onTabComplete();
 }

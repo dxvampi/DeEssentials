@@ -9,6 +9,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 public class WelcomeCommand extends SubCommand {
 
     public WelcomeCommand(DeEssentials plugin, CommandSender sender, Command command, String label, String[] args) {
@@ -26,8 +28,11 @@ public class WelcomeCommand extends SubCommand {
             return;
         }
 
-        Player player = ((Player) sender).getPlayer();
-        assert player != null;
-        player.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&aHello, &f" + player.getDisplayName() + "&a!"));
+        sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&aHello, &f" + ((Player) sender).getDisplayName() + "&a!"));
+    }
+
+    @Override
+    public List<String> onTabComplete() {
+        return List.of();
     }
 }

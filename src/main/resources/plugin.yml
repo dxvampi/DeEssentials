@@ -1,9 +1,11 @@
 main: de.dxvampi.DeEssentials
-version: 1.0.0a
+version: 1.2.2a
 name: DeEssentials
 author: dxvampi
 api-version: 1.13
 commands:
+  ping:
+    description: Pong!
   deessentials:
     description: Main command for De-Essentials
     aliases:
@@ -15,3 +17,95 @@ commands:
       - upt
       - serveruptime
       - supt
+  heal:
+    description: Heals yourself or another player
+    aliases:
+      - cure
+  feed:
+    description: Feeds yourself or another player
+  tpall:
+    description: Teleport everyone to one
+  tphere:
+    description: Teleports a player to yourself
+    aliases:
+      - tph
+  fly:
+    description: Allows the user to fly
+    aliases:
+      - flight
+  spawn:
+    description: Teleports you to the spawn
+  setspawn:
+    description: Sets the spawn position
+
+permissions:
+  # Main Command
+  deessentials.maincommand:
+    description: Allow players to use /deessentials or any of the alias
+    default: true
+
+  # Main command subcommands
+  deessentials.maincommand.get:
+    description: Allow players to see info about the plugin
+    default: op
+  deessentials.maincommand.date:
+    description: Allow players to see the actual date
+    default: true
+  deessentials.maincommand.version:
+    description: Allow players to see the current plugin's version
+    default: op
+  deessentials.maincommand.help:
+    description: Allow players to see help about the plugin commands
+    default: true
+
+  # Uptime command
+  deessentials.uptime:
+    description: Allow players to see the server uptime
+    default: op
+
+  # Heal command
+  deessentials.heal:
+    description: Makes you able to heal yourself
+    default: op
+  deessentials.heal.others:
+    description: Makes you able to heal others
+    default: op
+
+  # Feed command
+  deessentials.feed:
+    description: Makes you able to feed yourself
+    default: op
+  deessentials.feed.others:
+    description: Makes you able to feed others
+    default: op
+
+  # TPAll command
+  deessentials.tpall:
+    description: Makes the user able to teleport everybody to a player
+    default: op
+
+  # TPHere command
+  deessentials.tphere:
+    description: Makes the user able to teleport other to himself
+    default: op
+
+  # Fly command
+  deessentials.fly:
+    description: Makes the user able to switch to fly mode
+    default: op
+  deessentials.fly.others:
+    description: Makes the user able to switch other people's fly mode
+    default: op
+
+  # Setspawn command
+  deessentials.setspawn:
+    description: Allows the user to set the spawn
+    default: op
+
+  # Spawn command
+  deessentials.spawn:
+    description: Allows the user to teleport to the spawn
+    default: true
+  deessentials.spawn.others:
+    description: Allows the user to send other people to the spawn
+    default: op
