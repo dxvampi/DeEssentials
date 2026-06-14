@@ -33,6 +33,10 @@ commands:
     description: Allows the user to fly
     aliases:
       - flight
+  spawn:
+    description: Teleports you to the spawn
+  setspawn:
+    description: Sets the spawn position
 
 permissions:
   # Main Command
@@ -91,4 +95,17 @@ permissions:
     default: op
   deessentials.fly.others:
     description: Makes the user able to switch other people's fly mode
+    default: op
+
+  # Setspawn command
+  deessentials.setspawn:
+    description: Allows the user to set the spawn
+    default: op
+
+  # Spawn command
+  deessentials.spawn:
+    description: Allows the user to teleport to the spawn
+    default: true
+  deessentials.spawn.others:
+    description: Allows the user to send other people to the spawn
     default: op

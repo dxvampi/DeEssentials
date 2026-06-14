@@ -6,6 +6,8 @@ import de.dxvampi.commands.player.HealCommand;
 import de.dxvampi.commands.PingCommand;
 import de.dxvampi.commands.UptimeCommand;
 import de.dxvampi.commands.maincommand.MainCommand;
+import de.dxvampi.commands.spawn.SetSpawnCommand;
+import de.dxvampi.commands.spawn.SpawnCommand;
 import de.dxvampi.commands.teleport.TPAllCommand;
 import de.dxvampi.commands.teleport.TPHereCommand;
 import de.dxvampi.listeners.PlayerListener;
@@ -16,6 +18,7 @@ import de.dxvampi.utils.MessageUtils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.ServiceConfigurationError;
 
 public class DeEssentials extends JavaPlugin {
 
@@ -26,6 +29,7 @@ public class DeEssentials extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        this.saveDefaultConfig();
         try {
             registerCommands();
             registerEvents();
@@ -87,6 +91,16 @@ public class DeEssentials extends JavaPlugin {
         FlyCommand flyCommand = new FlyCommand(this);
         Objects.requireNonNull(this.getCommand("fly")).setExecutor(flyCommand);
         Objects.requireNonNull(this.getCommand("fly")).setTabCompleter(flyCommand);
+
+        // SetSpawn command
+        SetSpawnCommand setSpawnCommand = new SetSpawnCommand(this);
+        Objects.requireNonNull(this.getCommand("setspawn")).setExecutor(setSpawnCommand);
+        Objects.requireNonNull(this.getCommand("setspawn")).setTabCompleter(setSpawnCommand);
+
+        // Spawn command
+        SpawnCommand spawnCommand = new SpawnCommand(this);
+        Objects.requireNonNull(this.getCommand("spawn")).setExecutor(spawnCommand);
+        Objects.requireNonNull(this.getCommand("spawn")).setTabCompleter(spawnCommand);
     }
 
     private void registerEvents() {
