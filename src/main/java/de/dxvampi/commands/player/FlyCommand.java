@@ -16,7 +16,7 @@ import java.util.List;
 
 public class FlyCommand implements CommandExecutor, TabCompleter {
 
-    private DeEssentials plugin;
+    private final DeEssentials plugin;
 
     public FlyCommand(DeEssentials plugin) {
         this.plugin = plugin;
@@ -78,7 +78,7 @@ public class FlyCommand implements CommandExecutor, TabCompleter {
 
     }
 
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String[] args) {
         if (args.length > 1) {
             return List.of();
         }

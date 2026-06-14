@@ -13,7 +13,6 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class TPHereCommand implements CommandExecutor, TabCompleter {
 
@@ -61,7 +60,7 @@ public class TPHereCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String[] args) {
         if (args.length > 1) {
             return List.of();
         }
