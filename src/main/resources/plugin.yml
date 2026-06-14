@@ -37,6 +37,10 @@ commands:
     description: Teleports you to the spawn
   setspawn:
     description: Sets the spawn position
+  invsee:
+    description: Displays a player's inventory
+    aliases:
+      - inventorysee
 
 permissions:
   # Main Command
@@ -57,6 +61,9 @@ permissions:
   deessentials.maincommand.help:
     description: Allow players to see help about the plugin commands
     default: true
+  deessentials.maincommand.reload:
+    description: Allows the user to reload the config
+    default: op
 
   # Uptime command
   deessentials.uptime:
@@ -108,4 +115,9 @@ permissions:
     default: true
   deessentials.spawn.others:
     description: Allows the user to send other people to the spawn
+    default: op
+
+  # InvSee command
+  deessentials.invsee:
+    description: Allows the user to see other player's inventory
     default: op

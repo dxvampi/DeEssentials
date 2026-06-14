@@ -14,17 +14,27 @@ public class PingCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
-        if(!(sender instanceof Player p)) {
+
+        if (!(sender instanceof Player p)) {
             sender.sendMessage(MessageUtils.getColoredMessage("&cYou can't use &7/" + label + " &cin the console"));
-            return false;
+            return true;
         }
-        p.sendMessage(p.getPing() + "ms");
+
+        int ping = p.getPing();
+
+        String color = "&a";
+        if (ping >= 150) {
+            color = "&c";
+        } else if (ping >= 80) {
+            color = "&e";
+        }
+
+        p.sendMessage(MessageUtils.getColoredMessage("&aYour ping is: " + color + ping + "ms"));
         return true;
     }
 
     @Override
     public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
-            return List.of();
+        return List.of();
     }
 }
-
