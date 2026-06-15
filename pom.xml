@@ -6,7 +6,7 @@
 
     <groupId>de.dxvampi</groupId>
     <artifactId>DeEssentials</artifactId>
-    <version>1.0.0a</version>
+    <version>0.3alpha</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -28,10 +28,10 @@
 
     <dependencies>
         <dependency>
-        <groupId>org.spigotmc</groupId>
-        <artifactId>spigot-api</artifactId>
-        <version>1.18.2-R0.1-SNAPSHOT</version>
-        <scope>provided</scope>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
