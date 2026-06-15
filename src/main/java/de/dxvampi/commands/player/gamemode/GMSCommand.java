@@ -51,7 +51,7 @@ public class GMSCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        to_change.setGameMode(GameMode.CREATIVE);
+        to_change.setGameMode(GameMode.SURVIVAL);
         to_change.sendMessage(MessageUtils.getColoredMessage("&aYour gamemode has been set to &e" + "survival"));
         if (to_change != sender) {
             sender.sendMessage(MessageUtils.getColoredMessage("&aYou have changed &f" + to_change.getName() + "&a's gamemode to &e" + "survival"));
