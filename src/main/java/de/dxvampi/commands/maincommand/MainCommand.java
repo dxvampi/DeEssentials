@@ -2,10 +2,7 @@ package de.dxvampi.commands.maincommand;
 
 import de.dxvampi.DeEssentials;
 import de.dxvampi.commands.base.CommandErrors;
-import de.dxvampi.commands.maincommand.subcommands.DateCommand;
-import de.dxvampi.commands.maincommand.subcommands.GetInfoCommand;
-import de.dxvampi.commands.maincommand.subcommands.HelpCommand;
-import de.dxvampi.commands.maincommand.subcommands.WelcomeCommand;
+import de.dxvampi.commands.maincommand.subcommands.*;
 import de.dxvampi.utils.MessageUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -40,6 +37,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 case "greet":
                 case "welcome": new WelcomeCommand(plugin, sender, command, label, args).execute(); break;
                 case "get": new GetInfoCommand(plugin, sender, command, label, args).execute(); break;
+                case "reload": new ReloadCommand(plugin, sender, command, label, args).execute(); break;
                 default: sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cSub-command &7/" + label + " " +
                         args[0] + "&c does not exist"));
             }
@@ -58,7 +56,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             return completions;
         }
         if (args.length == 1) {
-            List<String> subcommands = List.of("date", "help", "get", "greet", "welcome");
+            List<String> subcommands = List.of("date", "help", "get", "greet", "welcome", "reload");
 
             String currentArg = args[0].toLowerCase();
 
@@ -70,9 +68,14 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length > 1) {
-            if (args[0].equals("get")) {
-                completions = new GetInfoCommand(plugin, sender, command, label, args).onTabComplete();
-            }
+            completions = switch (args[0].toLowerCase()) {
+                case "get" -> new GetInfoCommand(plugin, sender, command, label, args).onTabComplete();
+                case "date" -> new DateCommand(plugin, sender, command, label, args).onTabComplete();
+                case "help" -> new HelpCommand(plugin, sender, command, label, args).onTabComplete();
+                case "greet", "welcome" -> new WelcomeCommand(plugin, sender, command, label, args).onTabComplete();
+                case "reload" -> new ReloadCommand(plugin, sender, command, label, args).onTabComplete();
+                default -> List.of();
+            };
         }
 
         return completions;

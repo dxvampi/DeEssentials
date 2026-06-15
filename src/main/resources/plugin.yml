@@ -1,5 +1,5 @@
 main: de.dxvampi.DeEssentials
-version: 1.2.2a
+version: 0.3alpha
 name: DeEssentials
 author: dxvampi
 api-version: 1.13
@@ -37,6 +37,37 @@ commands:
     description: Teleports you to the spawn
   setspawn:
     description: Sets the spawn position
+  invsee:
+    description: Displays a player's inventory
+    aliases:
+      - inventorysee
+  craft:
+    description: Displays a crafting table interface
+    aliases:
+      - workbench
+      - wb
+  enderchest:
+    description: Displays a player's ender chest
+    aliases:
+      - ec
+
+  # GAMEMODE COMMANDS
+  gms:
+    description: Switches to survival mode
+    aliases:
+      - gm0
+  gmc:
+    description: Switches to creative mode
+    aliases:
+      - gm1
+  gma:
+    description: Switches to adventure mode
+    aliases:
+      - gm2
+  gmsp:
+    description: Switches to spectator mode
+    aliases:
+      - gm3
 
 permissions:
   # Main Command
@@ -57,6 +88,9 @@ permissions:
   deessentials.maincommand.help:
     description: Allow players to see help about the plugin commands
     default: true
+  deessentials.maincommand.reload:
+    description: Allows the user to reload the config
+    default: op
 
   # Uptime command
   deessentials.uptime:
@@ -108,4 +142,35 @@ permissions:
     default: true
   deessentials.spawn.others:
     description: Allows the user to send other people to the spawn
+    default: op
+
+  # InvSee command
+  deessentials.invsee:
+    description: Allows the user to see other player's inventory
+    default: op
+
+  # Craft command
+  deessentials.craft:
+    description: Allows the user to craft wherever
+    default: op
+
+  # Gamemode switching
+  deessentials.gamemode.*:
+    description: Allows the user to switch to whatever mode
+    default: op
+
+  deessentials.gamemode.survival:
+    description: Allows the user to switch to survival mode
+    default: op
+
+  deessentials.gamemode.creative:
+    description: Allows the user to switch to creative mode
+    default: op
+
+  deessentials.gamemode.adventure:
+    description: Allows the user to switch to adventure mode
+    default: op
+
+  deessentials.gamemode.spectator:
+    description: Allows the user to switch to spectator mode
     default: op

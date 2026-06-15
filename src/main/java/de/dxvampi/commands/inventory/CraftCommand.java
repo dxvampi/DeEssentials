@@ -1,6 +1,7 @@
-package de.dxvampi.commands;
+package de.dxvampi.commands.inventory;
 
-import de.dxvampi.utils.MessageUtils;
+import de.dxvampi.DeEssentials;
+import de.dxvampi.commands.base.CommandErrors;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,26 +11,24 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
-public class PingCommand implements CommandExecutor, TabCompleter {
+public class CraftCommand implements CommandExecutor, TabCompleter {
+
+    private final DeEssentials plugin;
+    public CraftCommand(DeEssentials plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
-
-        if (!(sender instanceof Player p)) {
-            sender.sendMessage(MessageUtils.getColoredMessage("&cYou can't use &7/" + label + " &cin the console"));
+        if (!(sender instanceof Player player)) {
+            CommandErrors.RaiseConsoleCommandAvailability(plugin, sender, label, args);
             return true;
         }
-
-        int ping = p.getPing();
-
-        String color = "&a";
-        if (ping >= 150) {
-            color = "&c";
-        } else if (ping >= 80) {
-            color = "&e";
+        if (!sender.hasPermission("deessentials.craft")) {
+            CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
+            return true;
         }
-
-        p.sendMessage(MessageUtils.getColoredMessage("&aYour ping is: " + color + ping + "ms"));
+        player.openWorkbench(null, true);
         return true;
     }
 

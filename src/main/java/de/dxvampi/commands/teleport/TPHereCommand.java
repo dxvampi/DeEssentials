@@ -54,6 +54,7 @@ public class TPHereCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        toTeleport.teleport(target);
         target.sendMessage(MessageUtils.getColoredMessage("&aTeleported &f" + toTeleport.getDisplayName() + "&a to you"));
         toTeleport.sendMessage(MessageUtils.getColoredMessage("&aYou have been teleported to &f" + target.getDisplayName()));
         return true;

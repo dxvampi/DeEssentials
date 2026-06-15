@@ -1,26 +1,36 @@
 package de.dxvampi;
 
+import de.dxvampi.commands.inventory.CraftCommand;
+import de.dxvampi.commands.inventory.EnderChestCommand;
+import de.dxvampi.commands.inventory.InvSeeCommand;
 import de.dxvampi.commands.player.FeedCommand;
 import de.dxvampi.commands.player.FlyCommand;
 import de.dxvampi.commands.player.HealCommand;
 import de.dxvampi.commands.PingCommand;
 import de.dxvampi.commands.UptimeCommand;
 import de.dxvampi.commands.maincommand.MainCommand;
+import de.dxvampi.commands.player.gamemode.GMACommand;
+import de.dxvampi.commands.player.gamemode.GMCCommand;
+import de.dxvampi.commands.player.gamemode.GMSCommand;
+import de.dxvampi.commands.player.gamemode.GMSPCommand;
 import de.dxvampi.commands.spawn.SetSpawnCommand;
 import de.dxvampi.commands.spawn.SpawnCommand;
 import de.dxvampi.commands.teleport.TPAllCommand;
 import de.dxvampi.commands.teleport.TPHereCommand;
 import de.dxvampi.listeners.PlayerListener;
+import de.dxvampi.utils.permission.*;
+import de.dxvampi.utils.permission.providers.BukkitPermissionProvider;
+import de.dxvampi.utils.permission.providers.LuckPermsPermissionProvider;
+import de.dxvampi.utils.permission.providers.VaultPermissionProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.dxvampi.utils.MessageUtils;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class DeEssentials extends JavaPlugin {
 
+    private PermissionProvider permissionProvider = new BukkitPermissionProvider();
     private final String name = getName();
     private final String prefix = "&8[&a&l" + getName() + "&8] ";
     private final String version = getDescription().getVersion();
@@ -32,6 +42,7 @@ public class DeEssentials extends JavaPlugin {
         try {
             registerCommands();
             registerEvents();
+            setupPermissions();
         }
         catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage(MessageUtils.getColoredMessage("Could not initialize " + name + "."));
@@ -100,13 +111,67 @@ public class DeEssentials extends JavaPlugin {
         SpawnCommand spawnCommand = new SpawnCommand(this);
         Objects.requireNonNull(this.getCommand("spawn")).setExecutor(spawnCommand);
         Objects.requireNonNull(this.getCommand("spawn")).setTabCompleter(spawnCommand);
+
+        // Invsee command
+        InvSeeCommand invSeeCommand = new InvSeeCommand(this);
+        Objects.requireNonNull(this.getCommand("invsee")).setExecutor(invSeeCommand);
+        Objects.requireNonNull(this.getCommand("invsee")).setTabCompleter(invSeeCommand);
+
+        // Craft command
+        CraftCommand command = new CraftCommand(this);
+        Objects.requireNonNull(this.getCommand("craft")).setExecutor(command);
+        Objects.requireNonNull(this.getCommand("craft")).setTabCompleter(command);
+
+        // EnderChest command
+        EnderChestCommand enderChestCommand = new EnderChestCommand(this);
+        Objects.requireNonNull(this.getCommand("enderchest")).setExecutor(enderChestCommand);
+        Objects.requireNonNull(this.getCommand("enderchest")).setTabCompleter(enderChestCommand);
+
+        // GMS command
+        GMSCommand gmsCommand = new GMSCommand(this);
+        Objects.requireNonNull(this.getCommand("gms")).setExecutor(gmsCommand);
+        Objects.requireNonNull(this.getCommand("gms")).setTabCompleter(gmsCommand);
+
+        // GMC command
+        GMCCommand gmcCommand = new GMCCommand(this);
+        Objects.requireNonNull(this.getCommand("gmc")).setExecutor(gmcCommand);
+        Objects.requireNonNull(this.getCommand("gmc")).setTabCompleter(gmcCommand);
+
+        // GMA command
+        GMACommand gmaCommand = new GMACommand(this);
+        Objects.requireNonNull(this.getCommand("gma")).setExecutor(gmaCommand);
+        Objects.requireNonNull(this.getCommand("gma")).setTabCompleter(gmaCommand);
+
+        // GMSP command
+        GMSPCommand gmspCommand = new GMSPCommand(this);
+        Objects.requireNonNull(this.getCommand("gmsp")).setExecutor(gmspCommand);
+        Objects.requireNonNull(this.getCommand("gmsp")).setTabCompleter(gmspCommand);
     }
 
     private void registerEvents() {
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
     }
 
+    private void setupPermissions() {
+        if (Bukkit.getPluginManager().getPlugin("LuckPerms") != null) {
+            this.permissionProvider = new LuckPermsPermissionProvider();
+            getLogger().info("LuckPerms has been detected, using LuckPerms API for groups");
+        }
+        else if (Bukkit.getPluginManager().getPlugin("Vault") != null) {
+            this.permissionProvider = new VaultPermissionProvider();
+            getLogger().info("Vault has been detected, using universal group detection");
+        }
+        else {
+            this.permissionProvider = new BukkitPermissionProvider();
+            getLogger().info("No supported permission plugin detected! Using fallback.");
+        }
+    }
+
     // GETTER METHODS
+
+    public PermissionProvider getPermissionProvider() {
+        return this.permissionProvider;
+    }
 
     public String getPrefix() {
         return prefix;
