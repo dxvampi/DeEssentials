@@ -41,6 +41,11 @@ commands:
     description: Displays a player's inventory
     aliases:
       - inventorysee
+  craft:
+    description: Displays a crafting table interface
+    aliases:
+      - workbench
+      - wb
 
 permissions:
   # Main Command
@@ -120,4 +125,9 @@ permissions:
   # InvSee command
   deessentials.invsee:
     description: Allows the user to see other player's inventory
+    default: op
+
+  # Craft command
+  deessentials.craft:
+    description: Allows the user to craft wherever
     default: op

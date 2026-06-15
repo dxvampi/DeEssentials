@@ -1,5 +1,6 @@
 package de.dxvampi;
 
+import de.dxvampi.commands.inventory.CraftCommand;
 import de.dxvampi.commands.inventory.InvSeeCommand;
 import de.dxvampi.commands.player.FeedCommand;
 import de.dxvampi.commands.player.FlyCommand;
@@ -20,13 +21,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.dxvampi.utils.MessageUtils;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class DeEssentials extends JavaPlugin {
 
-    private PermissionProvider permissionProvider;
+    private PermissionProvider permissionProvider = new BukkitPermissionProvider();
     private final String name = getName();
     private final String prefix = "&8[&a&l" + getName() + "&8] ";
     private final String version = getDescription().getVersion();
@@ -112,6 +111,11 @@ public class DeEssentials extends JavaPlugin {
         InvSeeCommand invSeeCommand = new InvSeeCommand(this);
         Objects.requireNonNull(this.getCommand("invsee")).setExecutor(invSeeCommand);
         Objects.requireNonNull(this.getCommand("invsee")).setTabCompleter(invSeeCommand);
+
+        // Craft command
+        CraftCommand command = new CraftCommand(this);
+        Objects.requireNonNull(this.getCommand("craft")).setExecutor(command);
+        Objects.requireNonNull(this.getCommand("craft")).setTabCompleter(command);
     }
 
     private void registerEvents() {
