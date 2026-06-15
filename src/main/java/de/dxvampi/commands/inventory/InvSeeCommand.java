@@ -34,6 +34,7 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
         if(args.length == 0) {
             sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cIncorrect usage! Valid usage: &7/" + label + " " +
             "<player>"));
+            return true;
         }
         Player toSee = Bukkit.getPlayer(args[0]);
         if(toSee == null) {
