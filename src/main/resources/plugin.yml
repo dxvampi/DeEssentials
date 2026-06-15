@@ -51,6 +51,24 @@ commands:
     aliases:
       - ec
 
+  # GAMEMODE COMMANDS
+  gms:
+    description: Switches to survival mode
+    aliases:
+      - gm0
+  gmc:
+    description: Switches to creative mode
+    aliases:
+      - gm1
+  gma:
+    description: Switches to adventure mode
+    aliases:
+      - gm2
+  gmsp:
+    description: Switches to spectator mode
+    aliases:
+      - gm3
+
 permissions:
   # Main Command
   deessentials.maincommand:
@@ -134,4 +152,25 @@ permissions:
   # Craft command
   deessentials.craft:
     description: Allows the user to craft wherever
+    default: op
+
+  # Gamemode switching
+  deessentials.gamemode.*:
+    description: Allows the user to switch to whatever mode
+    default: op
+
+  deessentials.gamemode.survival:
+    description: Allows the user to switch to survival mode
+    default: op
+
+  deessentials.gamemode.creative:
+    description: Allows the user to switch to creative mode
+    default: op
+
+  deessentials.gamemode.adventure:
+    description: Allows the user to switch to adventure mode
+    default: op
+
+  deessentials.gamemode.spectator:
+    description: Allows the user to switch to spectator mode
     default: op

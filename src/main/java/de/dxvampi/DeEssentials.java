@@ -9,6 +9,10 @@ import de.dxvampi.commands.player.HealCommand;
 import de.dxvampi.commands.PingCommand;
 import de.dxvampi.commands.UptimeCommand;
 import de.dxvampi.commands.maincommand.MainCommand;
+import de.dxvampi.commands.player.gamemode.GMACommand;
+import de.dxvampi.commands.player.gamemode.GMCCommand;
+import de.dxvampi.commands.player.gamemode.GMSCommand;
+import de.dxvampi.commands.player.gamemode.GMSPCommand;
 import de.dxvampi.commands.spawn.SetSpawnCommand;
 import de.dxvampi.commands.spawn.SpawnCommand;
 import de.dxvampi.commands.teleport.TPAllCommand;
@@ -122,6 +126,26 @@ public class DeEssentials extends JavaPlugin {
         EnderChestCommand enderChestCommand = new EnderChestCommand(this);
         Objects.requireNonNull(this.getCommand("enderchest")).setExecutor(enderChestCommand);
         Objects.requireNonNull(this.getCommand("enderchest")).setTabCompleter(enderChestCommand);
+
+        // GMS command
+        GMSCommand gmsCommand = new GMSCommand(this);
+        Objects.requireNonNull(this.getCommand("gms")).setExecutor(gmsCommand);
+        Objects.requireNonNull(this.getCommand("gms")).setTabCompleter(gmsCommand);
+
+        // GMC command
+        GMCCommand gmcCommand = new GMCCommand(this);
+        Objects.requireNonNull(this.getCommand("gmc")).setExecutor(gmcCommand);
+        Objects.requireNonNull(this.getCommand("gmc")).setTabCompleter(gmcCommand);
+
+        // GMA command
+        GMACommand gmaCommand = new GMACommand(this);
+        Objects.requireNonNull(this.getCommand("gma")).setExecutor(gmaCommand);
+        Objects.requireNonNull(this.getCommand("gma")).setTabCompleter(gmaCommand);
+
+        // GMSP command
+        GMSPCommand gmspCommand = new GMSPCommand(this);
+        Objects.requireNonNull(this.getCommand("gmsp")).setExecutor(gmspCommand);
+        Objects.requireNonNull(this.getCommand("gmsp")).setTabCompleter(gmspCommand);
     }
 
     private void registerEvents() {
