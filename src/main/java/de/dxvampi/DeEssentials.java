@@ -1,6 +1,7 @@
 package de.dxvampi;
 
 import de.dxvampi.commands.inventory.CraftCommand;
+import de.dxvampi.commands.inventory.EnderChestCommand;
 import de.dxvampi.commands.inventory.InvSeeCommand;
 import de.dxvampi.commands.player.FeedCommand;
 import de.dxvampi.commands.player.FlyCommand;
@@ -116,6 +117,11 @@ public class DeEssentials extends JavaPlugin {
         CraftCommand command = new CraftCommand(this);
         Objects.requireNonNull(this.getCommand("craft")).setExecutor(command);
         Objects.requireNonNull(this.getCommand("craft")).setTabCompleter(command);
+
+        // EnderChest command
+        EnderChestCommand enderChestCommand = new EnderChestCommand(this);
+        Objects.requireNonNull(this.getCommand("enderchest")).setExecutor(enderChestCommand);
+        Objects.requireNonNull(this.getCommand("enderchest")).setTabCompleter(enderChestCommand);
     }
 
     private void registerEvents() {

@@ -46,6 +46,10 @@ commands:
     aliases:
       - workbench
       - wb
+  enderchest:
+    description: Displays a player's ender chest
+    aliases:
+      - ec
 
 permissions:
   # Main Command
