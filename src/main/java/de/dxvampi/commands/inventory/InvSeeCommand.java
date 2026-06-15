@@ -2,6 +2,7 @@ package de.dxvampi.commands.inventory;
 
 import de.dxvampi.DeEssentials;
 import de.dxvampi.commands.base.CommandErrors;
+import de.dxvampi.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,6 +30,10 @@ public class InvSeeCommand implements CommandExecutor, TabCompleter {
         if(!sender.hasPermission("deessentials.invsee")) {
             CommandErrors.RaiseInsufficientPermission(plugin, sender, label, args);
             return true;
+        }
+        if(args.length == 0) {
+            sender.sendMessage(MessageUtils.getColoredMessage(plugin.getPrefix() + "&cIncorrect usage! Valid usage: &7/" + label + " " +
+            "<player>"));
         }
         Player toSee = Bukkit.getPlayer(args[0]);
         if(toSee == null) {
