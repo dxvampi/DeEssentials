@@ -70,7 +70,6 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             completions = switch (args[0].toLowerCase()) {
                 case "get" -> new GetInfoCommand(plugin, sender, command, label, args).onTabComplete();
                 case "date" -> new DateCommand(plugin, sender, command, label, args).onTabComplete();
-                case "help" -> new HelpCommand(plugin, sender, command, label, args).onTabComplete();
                 case "greet", "welcome" -> new WelcomeCommand(plugin, sender, command, label, args).onTabComplete();
                 case "reload" -> new ReloadCommand(plugin, sender, command, label, args).onTabComplete();
                 default -> List.of();
