@@ -33,7 +33,6 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         if(args.length >= 1) {
             switch(args[0].toLowerCase()) {
                 case "date": new DateCommand(plugin, sender, command, label, args).execute(); break;
-                case "help": new HelpCommand(plugin, sender, command, label, args).execute(); break;
                 case "greet":
                 case "welcome": new WelcomeCommand(plugin, sender, command, label, args).execute(); break;
                 case "get": new GetInfoCommand(plugin, sender, command, label, args).execute(); break;
@@ -56,7 +55,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             return completions;
         }
         if (args.length == 1) {
-            List<String> subcommands = List.of("date", "help", "get", "greet", "welcome", "reload");
+            List<String> subcommands = List.of("date", "get", "greet", "welcome", "reload");
 
             String currentArg = args[0].toLowerCase();
 
