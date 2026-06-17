@@ -6,7 +6,7 @@
 
     <groupId>de.dxvampi</groupId>
     <artifactId>DeEssentials</artifactId>
-    <version>0.3alpha</version>
+    <version>0.3.2alpha</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
