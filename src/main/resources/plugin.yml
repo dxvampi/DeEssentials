@@ -11,69 +11,102 @@ commands:
     aliases:
       - dessentials
       - essentials
+    permission: deessentials.maincommand
+    permission-message: ""
   uptime:
     description: Uptime of the server
     aliases:
       - upt
       - serveruptime
       - supt
+    permission: deessentials.uptime
+    permission-message: ""
   heal:
     description: Heals yourself or another player
     aliases:
       - cure
+    permission: deessentials.heal
+    permission-message: ""
   feed:
     description: Feeds yourself or another player
+    permission: deessentials.feed
+    permission-message: ""
   tpall:
     description: Teleport everyone to one
+    permission: deessentials.tpall
+    permission-message: ""
   tphere:
     description: Teleports a player to yourself
     aliases:
       - tph
+    permission: deessentials.tphere
+    permission-message: ""
   fly:
     description: Allows the user to fly
     aliases:
       - flight
+    permission: deessentials.fly
+    permission-message: ""
   spawn:
     description: Teleports you to the spawn
+    permission: deessentials.spawn
+    permission-message: ""
   setspawn:
     description: Sets the spawn position
+    permission: deessentials.setspawn
+    permission-message: ""
   invsee:
     description: Displays a player's inventory
     aliases:
       - inventorysee
+    permission: deessentials.invsee
+    permission-message: ""
   craft:
     description: Displays a crafting table interface
     aliases:
       - workbench
       - wb
+    permission: deessentials.craft
+    permission-message: ""
   enderchest:
     description: Displays a player's ender chest
     aliases:
       - ec
-
+    permission: deessentials.enderchest
+    permission-message: ""
   # GAMEMODE COMMANDS
   gms:
     description: Switches to survival mode
     aliases:
       - gm0
+    permission: deessentials.gamemode.survival
+    permission-message: ""
   gmc:
     description: Switches to creative mode
     aliases:
       - gm1
+    permission: deessentials.gamemode.creative
+    permission-message: ""
   gma:
     description: Switches to adventure mode
     aliases:
       - gm2
+    permission: deessentials.gamemode.adventure
+    permission-message: ""
   gmsp:
     description: Switches to spectator mode
     aliases:
       - gm3
+    permission: deessentials.gamemode.spectator
+    permission-message: ""
 
   trash:
     description: Opens a temporary inventory
     aliases:
       - trashbin
       - trashcan
+    permission: deessentials.trash
+    permission-message: ""
 
 permissions:
   # Main Command
@@ -164,22 +197,11 @@ permissions:
   deessentials.gamemode.*:
     description: Allows the user to switch to whatever mode
     default: op
-
-  deessentials.gamemode.survival:
-    description: Allows the user to switch to survival mode
-    default: op
-
-  deessentials.gamemode.creative:
-    description: Allows the user to switch to creative mode
-    default: op
-
-  deessentials.gamemode.adventure:
-    description: Allows the user to switch to adventure mode
-    default: op
-
-  deessentials.gamemode.spectator:
-    description: Allows the user to switch to spectator mode
-    default: op
+    children:
+      deessentials.gamemode.survival: true
+      deessentials.gamemode.creative: true
+      deessentials.gamemode.adventure: true
+      deessentials.gamemode.spectator: true
 
   # Trash command
   deessentials.trash:
