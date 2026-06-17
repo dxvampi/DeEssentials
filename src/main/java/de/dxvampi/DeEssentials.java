@@ -6,6 +6,7 @@ import de.dxvampi.commands.inventory.InvSeeCommand;
 import de.dxvampi.commands.inventory.TrashCommand;
 import de.dxvampi.commands.player.FeedCommand;
 import de.dxvampi.commands.player.FlyCommand;
+import de.dxvampi.commands.player.HatCommand;
 import de.dxvampi.commands.player.HealCommand;
 import de.dxvampi.commands.PingCommand;
 import de.dxvampi.commands.UptimeCommand;
@@ -152,6 +153,11 @@ public class DeEssentials extends JavaPlugin {
         TrashCommand trashCommand = new TrashCommand(this);
         Objects.requireNonNull(this.getCommand("trash")).setExecutor(trashCommand);
         Objects.requireNonNull(this.getCommand("trash")).setTabCompleter(trashCommand);
+
+        // Hat command
+        HatCommand hatCommand = new HatCommand(this);
+        Objects.requireNonNull(this.getCommand("hat")).setExecutor(hatCommand);
+        Objects.requireNonNull(this.getCommand("hat")).setTabCompleter(hatCommand);
     }
 
     private void registerEvents() {

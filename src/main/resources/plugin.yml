@@ -108,6 +108,11 @@ commands:
     permission: deessentials.trash
     permission-message: ""
 
+  hat:
+    description: Put any item as a hat
+    permission: deessentials.hat
+    permission-message: ""
+
 permissions:
   # Main Command
   deessentials.maincommand:
@@ -206,4 +211,9 @@ permissions:
   # Trash command
   deessentials.trash:
     description: Allows the user to open a temporary inventory
+    default: op
+
+  # Hat command
+  deessentials.hat:
+    description: Allows the user to use any item as a hat
     default: op
