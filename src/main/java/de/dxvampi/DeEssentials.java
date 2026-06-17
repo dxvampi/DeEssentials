@@ -16,6 +16,7 @@ import de.dxvampi.commands.spawn.SetSpawnCommand;
 import de.dxvampi.commands.spawn.SpawnCommand;
 import de.dxvampi.commands.teleport.TPAllCommand;
 import de.dxvampi.commands.teleport.TPHereCommand;
+import de.dxvampi.listeners.GodListener;
 import de.dxvampi.listeners.PlayerListener;
 import de.dxvampi.utils.permission.*;
 import de.dxvampi.utils.permission.providers.BukkitPermissionProvider;
@@ -163,7 +164,7 @@ public class DeEssentials extends JavaPlugin {
     }
 
     private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        getServer().getPluginManager().registerEvents(new GodListener(), this);
     }
 
     private void setupPermissions() {
