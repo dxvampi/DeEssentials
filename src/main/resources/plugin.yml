@@ -69,6 +69,12 @@ commands:
     aliases:
       - gm3
 
+  trash:
+    description: Opens a temporary inventory
+    aliases:
+      - trashbin
+      - trashcan
+
 permissions:
   # Main Command
   deessentials.maincommand:
@@ -173,4 +179,9 @@ permissions:
 
   deessentials.gamemode.spectator:
     description: Allows the user to switch to spectator mode
+    default: op
+
+  # Trash command
+  deessentials.trash:
+    description: Allows the user to open a temporary inventory
     default: op

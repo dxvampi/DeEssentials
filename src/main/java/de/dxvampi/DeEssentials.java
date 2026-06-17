@@ -3,6 +3,7 @@ package de.dxvampi;
 import de.dxvampi.commands.inventory.CraftCommand;
 import de.dxvampi.commands.inventory.EnderChestCommand;
 import de.dxvampi.commands.inventory.InvSeeCommand;
+import de.dxvampi.commands.inventory.TrashCommand;
 import de.dxvampi.commands.player.FeedCommand;
 import de.dxvampi.commands.player.FlyCommand;
 import de.dxvampi.commands.player.HealCommand;
@@ -146,6 +147,11 @@ public class DeEssentials extends JavaPlugin {
         GMSPCommand gmspCommand = new GMSPCommand(this);
         Objects.requireNonNull(this.getCommand("gmsp")).setExecutor(gmspCommand);
         Objects.requireNonNull(this.getCommand("gmsp")).setTabCompleter(gmspCommand);
+
+        // Trash command
+        TrashCommand trashCommand = new TrashCommand(this);
+        Objects.requireNonNull(this.getCommand("trash")).setExecutor(trashCommand);
+        Objects.requireNonNull(this.getCommand("trash")).setTabCompleter(trashCommand);
     }
 
     private void registerEvents() {
