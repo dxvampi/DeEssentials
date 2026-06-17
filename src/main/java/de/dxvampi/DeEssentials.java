@@ -17,7 +17,6 @@ import de.dxvampi.commands.spawn.SpawnCommand;
 import de.dxvampi.commands.teleport.TPAllCommand;
 import de.dxvampi.commands.teleport.TPHereCommand;
 import de.dxvampi.listeners.GodListener;
-import de.dxvampi.listeners.PlayerListener;
 import de.dxvampi.utils.permission.*;
 import de.dxvampi.utils.permission.providers.BukkitPermissionProvider;
 import de.dxvampi.utils.permission.providers.LuckPermsPermissionProvider;
