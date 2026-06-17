@@ -4,10 +4,7 @@ import de.dxvampi.commands.inventory.CraftCommand;
 import de.dxvampi.commands.inventory.EnderChestCommand;
 import de.dxvampi.commands.inventory.InvSeeCommand;
 import de.dxvampi.commands.inventory.TrashCommand;
-import de.dxvampi.commands.player.FeedCommand;
-import de.dxvampi.commands.player.FlyCommand;
-import de.dxvampi.commands.player.HatCommand;
-import de.dxvampi.commands.player.HealCommand;
+import de.dxvampi.commands.player.*;
 import de.dxvampi.commands.PingCommand;
 import de.dxvampi.commands.UptimeCommand;
 import de.dxvampi.commands.maincommand.MainCommand;
@@ -19,7 +16,7 @@ import de.dxvampi.commands.spawn.SetSpawnCommand;
 import de.dxvampi.commands.spawn.SpawnCommand;
 import de.dxvampi.commands.teleport.TPAllCommand;
 import de.dxvampi.commands.teleport.TPHereCommand;
-import de.dxvampi.listeners.PlayerListener;
+import de.dxvampi.listeners.GodListener;
 import de.dxvampi.utils.permission.*;
 import de.dxvampi.utils.permission.providers.BukkitPermissionProvider;
 import de.dxvampi.utils.permission.providers.LuckPermsPermissionProvider;
@@ -158,10 +155,15 @@ public class DeEssentials extends JavaPlugin {
         HatCommand hatCommand = new HatCommand(this);
         Objects.requireNonNull(this.getCommand("hat")).setExecutor(hatCommand);
         Objects.requireNonNull(this.getCommand("hat")).setTabCompleter(hatCommand);
+
+        // God command
+        GodCommand godCommand = new GodCommand(this);
+        Objects.requireNonNull(this.getCommand("god")).setExecutor(godCommand);
+        Objects.requireNonNull(this.getCommand("god")).setTabCompleter(godCommand);
     }
 
     private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        getServer().getPluginManager().registerEvents(new GodListener(), this);
     }
 
     private void setupPermissions() {

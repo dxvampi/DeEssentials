@@ -1,5 +1,5 @@
 main: de.dxvampi.DeEssentials
-version: 0.3alpha
+version: 0.3.2alpha
 name: DeEssentials
 author: dxvampi
 api-version: 1.13
@@ -113,6 +113,11 @@ commands:
     permission: deessentials.hat
     permission-message: ""
 
+  god:
+    description: Makes the player invincible
+    permission: deessentials.god
+    permission-message: ""
+
 permissions:
   # Main Command
   deessentials.maincommand:
@@ -217,3 +222,10 @@ permissions:
   deessentials.hat:
     description: Allows the user to use any item as a hat
     default: op
+
+  # God command
+  deessentials.god:
+    description: Allows the user to make invincible
+    default: op
+    children:
+      deessentials.god.others: true
