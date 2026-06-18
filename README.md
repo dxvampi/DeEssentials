@@ -1,4 +1,2 @@
 # DeEssentials
-<p align="center">
-    <img src="logo.png" alt="DeEssentials Logo" width="192" style="image-rendering: pixelated; image-rendering: crisp-edges;">
-</p>
+A lightweight toolkit of commands for your Minecraft server
